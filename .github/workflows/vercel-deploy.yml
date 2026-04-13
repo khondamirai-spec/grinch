@@ -1,0 +1,44 @@
+name: Build Flutter and Deploy to Vercel Branch
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Enable web
+        run: flutter config --enable-web
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build web
+        run: flutter build web --release --web-renderer canvaskit
+
+      - name: Copy vercel.json
+        run: cp vercel.json build/web/vercel.json
+
+      - name: Deploy to vercel-deploy branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: vercel-deploy
+          folder: build/web
+          clean: true
+          commit-message: "Deploy Flutter web build"
