@@ -21,7 +21,7 @@ class DateUtils {
   }
 
   static String formatMonthDay(DateTime date) {
-    return _monthDay.format(date);
+    return _monthDayFormat.format(date);
   }
 
   static String getGreeting(DateTime date) {

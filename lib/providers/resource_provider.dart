@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 import '../models/resource_model.dart';
 import '../services/storage_service.dart';
+import 'task_provider.dart';
 import '../utils/resource_type.dart';
 
 const _uuid = Uuid();

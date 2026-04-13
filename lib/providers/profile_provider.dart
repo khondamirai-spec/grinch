@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/user_profile_model.dart';
 import '../services/storage_service.dart';
+import 'task_provider.dart';
 
 final profileProvider = StateNotifierProvider<ProfileNotifier, UserProfile?>((ref) {
   return ProfileNotifier(ref.watch(storageServiceProvider));
