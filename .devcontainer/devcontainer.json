@@ -1,0 +1,17 @@
+{
+  "name": "StudyFlow Flutter Dev",
+  "image": "cirrusci/flutter:stable",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {}
+  },
+  "forwardPorts": [3000, 8080],
+  "postCreateCommand": "flutter pub get",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Dart-Code.flutter",
+        "Dart-Code.dart-code"
+      ]
+    }
+  }
+}

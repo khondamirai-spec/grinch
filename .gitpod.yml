@@ -1,0 +1,17 @@
+image: gitpod/workspace-full
+
+tasks:
+  - init: |
+      flutter pub get
+    command: |
+      flutter run -d web-server --web-port 3000 --web-hostname 0.0.0.0
+
+ports:
+  - port: 3000
+    onOpen: open-preview
+    visibility: public
+
+vscode:
+  extensions:
+    - dart-code.flutter
+    - dart-code.dart-code
